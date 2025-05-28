@@ -27,9 +27,10 @@ public class CustomerDataAccess {
 
     public boolean loginUser(String username, String password) throws IOException, ClassNotFoundException {
         List<Customer> customers = CustomerDataFileManager.getManager().readFromFile();
-
+        System.out.println(customers.toString());
         for (Customer customer : customers) {
-            if (customer.getUsername().equals(username) && customer.getPassword().equals(password)) {
+            if (username.equals(customer.getUsername()) && password.equals(customer.getPassword())) {
+
                 return true;
             }
         }

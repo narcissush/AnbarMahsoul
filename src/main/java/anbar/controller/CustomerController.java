@@ -38,7 +38,7 @@ public class CustomerController implements Initializable {
         saveBtn.setOnAction(event -> {
             try {
                 Customer customer = new Customer();
-                customerDataAccess.saveCustomer(customer);
+                customerDataAccess.saveCustomer(getCustomerFromForm());
                 log.info("Customer Saved: {}", customer);
                 new Alert(Alert.AlertType.INFORMATION, "Customer Saved", ButtonType.OK).show();
                 resetForm();
@@ -52,7 +52,8 @@ public class CustomerController implements Initializable {
 
     private Customer getCustomerFromForm() {
         Gender genderRdb = menRbtn.isSelected() ? Gender.MALE : Gender.FEMALE;
-        return Customer.builder()
+        Customer customer=
+                Customer.builder()
                 .customerId(Integer.parseInt(customerIdTxt.getText()))
                 .name(nameTxt.getText())
                 .family(familyTxt.getText())
@@ -63,6 +64,8 @@ public class CustomerController implements Initializable {
                 .username(userTxt.getText())
                 .password(passwordTxt.getText())
                 .build();
+        return customer;
+
     }
 
 
