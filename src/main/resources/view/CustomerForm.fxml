@@ -78,6 +78,6 @@
       </GridPane>
       <Button fx:id="saveBtn" layoutX="43.0" layoutY="530.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="300.0" text="ثبت نام" />
       <Label layoutX="136.0" layoutY="37.0" text="فرم ثبت نام مشتری" />
-      <Button fx:id="BackBtn" layoutX="43.0" layoutY="571.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="300.0" text="بازگشت" />
+      <Button fx:id="backBtn" layoutX="43.0" layoutY="571.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="300.0" text="بازگشت" />
    </children>
 </Pane>

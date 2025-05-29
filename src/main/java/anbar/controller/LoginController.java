@@ -47,6 +47,8 @@ public class LoginController implements Initializable {
                 registerStage.setTitle("Register Customer");
                 registerStage.setScene(registerScene);
                 registerStage.show();
+
+
             }catch (Exception e1) {
                 log.error(e1.getMessage());
             }

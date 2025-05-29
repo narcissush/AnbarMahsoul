@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
 
 import java.net.URL;
@@ -27,7 +28,7 @@ public class CustomerController implements Initializable {
     @FXML private ToggleGroup genderGroup;
     @FXML private DatePicker birthDatePick;
 
-    @FXML private Button saveBtn;
+    @FXML private Button saveBtn,backBtn;
 
     private final CustomerDataAccess customerDataAccess = new CustomerDataAccess();
 
@@ -38,7 +39,7 @@ public class CustomerController implements Initializable {
         saveBtn.setOnAction(event -> {
             try {
                 Customer customer = new Customer();
-                customerDataAccess.saveCustomer(getCustomerFromForm());
+                customerDataAccess.saveCustomer(getCustomerFrom());
                 log.info("Customer Saved: {}", customer);
                 new Alert(Alert.AlertType.INFORMATION, "Customer Saved", ButtonType.OK).show();
                 resetForm();
@@ -47,10 +48,16 @@ public class CustomerController implements Initializable {
                 new Alert(Alert.AlertType.ERROR, "Error Saving Customer", ButtonType.OK).show();
             }
         });
+        backBtn.setOnAction(event -> {
+            //
+        });
+
+
+
 
     }
 
-    private Customer getCustomerFromForm() {
+    private Customer getCustomerFrom() {
         Gender genderRdb = menRbtn.isSelected() ? Gender.MALE : Gender.FEMALE;
         Customer customer=
                 Customer.builder()
@@ -67,9 +74,6 @@ public class CustomerController implements Initializable {
         return customer;
 
     }
-
-
-
     private void resetForm() {
         customerIdTxt.setText(String.valueOf(CustomerDataFileManager.getManager().getNextId()));
         nameTxt.clear();
